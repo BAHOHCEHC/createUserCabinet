@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 1,
-      "role":"admin",
+      "role": "admin",
       "login": "Bahohcehc",
       "email": "admin@admin.ua",
-      "password": "123",
+      "password": "12345678",
       "firstName": "Master",
       "lastName": "Supername",
       "phoneNumber": "380669734571",
@@ -16,8 +16,23 @@
       "postalCode": "555"
     },
     {
+      "id": 1,
+      "role": "admin",
+      "login": "ssssssss",
+      "email": "admin@admin.ua",
+      "password": "12345678",
+      "firstName": "Master",
+      "lastName": "ssssss",
+      "phoneNumber": "123456789",
+      "addressType": "Shipping address",
+      "adressHome": "Pushkin str.",
+      "city": "Kiev",
+      "country": "Ukraine",
+      "postalCode": "555"
+    },
+    {
       "id": 2,
-      "role":"user",
+      "role": "user",
       "login": "Burato",
       "email": "user@user.ua",
       "password": "123",

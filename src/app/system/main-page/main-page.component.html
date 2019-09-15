@@ -1,0 +1,171 @@
+<h1>Search form</h1>
+
+
+
+
+
+
+<form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="searchUser(searchForm.value)"
+  fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <mat-card-content>
+
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col-md-6">
+          <input matInput type="text" placeholder="First Name" formControlName="firstNameControl" id="firstNameControl">
+          <mat-error *ngIf="hasError('firstNameControl', 'maxlength')">You have more than 20 characters</mat-error>
+          <mat-error *ngIf="hasError('firstNameControl', 'required')">Its required field</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6">
+          <input matInput type="text" placeholder="Last name" formControlName="lastNameControl" id="lastNameControl">
+          <mat-error *ngIf="hasError('lastNameControl', 'maxlength')">You have more than 20 characters</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col-md-4">
+          <input matInput type="text" placeholder="User name" formControlName="userNameControl" id="userNameControl">
+          <mat-error *ngIf="hasError('userNameControl', 'maxlength')">You have more than 20 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+          <input matInput type="text" placeholder="Email" formControlName="emailFormControl" id="emailFormControl">
+          <mat-error *ngIf="hasError('emailFormControl', 'pattern')">
+            incorect format
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+          <input matInput type="text" placeholder="Phone" formControlName="phoneFormControl" id="phoneFormControl">
+          <mat-error *ngIf="hasError('phoneFormControl', 'pattern')">Only numbers</mat-error>
+          <mat-error *ngIf="hasError('phoneFormControl', 'minlength')  && !(hasError('phoneFormControl', 'pattern'))">
+            Must be more than 5 numbers</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+
+
+
+  </mat-card-content>
+
+
+  <mat-card-actions>
+    <div class="container">
+      <div class="row">
+        <button class="col-md-1" mat-raised-button color="primary" [disabled]="!searchForm.valid">Search</button>
+        <button class="col-md-1" type="button" mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+    </div>
+  </mat-card-actions>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+
+<form class="example-form" (ngSubmit)="submitForm()">
+
+
+  <div class="container">
+    <div class="row">
+      <mat-form-field class="col-md-6">
+        <input [formControl]="firstNameControl" matInput placeholder="First name" value="">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input [formControl]="lastNameControl" matInput placeholder="Last name" value="">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-md-4">
+        <input [formControl]="userNameControl" matInput placeholder="User name" value="">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+        <mat-hint>[style.color]="'red'" Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <input [formControl]="phoneFormControl" matInput placeholder="Last name" value="Sushi">
+      </mat-form-field>
+    </div>
+
+
+
+   <div class="row">
+     <button class="btn btn-success" type="submit" >Find</button>
+     <button class="btn btn-success" type="submit" (click)="clearForm()" >Clear</button>
+   </div>
+  </div>
+
+
+
+
+
+
+</form> -->
+
+
+
+<!--
+
+  <mat-form-field class="col-md-4">
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> -->
