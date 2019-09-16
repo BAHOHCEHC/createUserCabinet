@@ -3,25 +3,25 @@
     {
       "id": 1,
       "role": "admin",
-      "login": "Bahohcehc",
+      "login": "aaaaaaaaaaa",
       "email": "admin@admin.ua",
       "password": "12345678",
-      "firstName": "Master",
+      "firstName": "master",
       "lastName": "Supername",
       "phoneNumber": "380669734571",
       "addressType": "Shipping address",
       "adressHome": "Pushkin str.",
-      "city": "Kiev",
+      "city": "Berlin",
       "country": "Ukraine",
       "postalCode": "555"
     },
     {
-      "id": 1,
+      "id": 3,
       "role": "admin",
       "login": "ssssssss",
       "email": "admin@admin.ua",
       "password": "12345678",
-      "firstName": "Master",
+      "firstName": "master",
       "lastName": "ssssss",
       "phoneNumber": "123456789",
       "addressType": "Shipping address",
@@ -41,8 +41,8 @@
       "phoneNumber": "389506546541",
       "addressType": "Shipping address",
       "adressHome": "Ivanov str.",
-      "city": "Kiev",
-      "country": "Ukraine",
+      "city": "Mosscow",
+      "country": "russia",
       "postalCode": "555"
     }
   ]

@@ -5458,7 +5458,6 @@ Copyright (c) 2015 Daniel Eden
   border: 1px solid #000;
   box-sizing: border-box;
   display: inline-block;
-  float: left;
   padding: 5px;
   text-align: center;
   width: 50%
@@ -5680,7 +5679,6 @@ Copyright (c) 2015 Daniel Eden
   border: 1px solid #000;
   box-sizing: border-box;
   display: inline-block;
-  float: left;
   padding: 5px;
   text-align: center;
   width: 50%
@@ -6816,7 +6814,6 @@ Copyright (c) 2015 Daniel Eden
   width: 80px;
   margin-left: -40px;
   background: rgba(255, 255, 255, .9);
-  -webkit-transform: scale(1);
   border-radius: 8px;
   overflow: hidden
 }
@@ -7138,17 +7135,10 @@ html {
   box-sizing: inherit
 }
 
-@-moz-viewport {
-  width: device-width
-}
-
 @-ms-viewport {
   width: device-width
 }
 
-@-webkit-viewport {
-  width: device-width
-}
 
 @viewport {
   width: device-width

@@ -28,6 +28,9 @@ export class UsersService extends BaseApi {
   searchUser(): Observable<User[]> {
     return this.get(`users`);
   }
+  getAllUser(): Observable<User[]> {
+    return this.get(`users`);
+  }
   // searchUser(user: User): Observable<any> {
   //   return this.get(`users`).pipe(
   //     map((users: User[]) =>
