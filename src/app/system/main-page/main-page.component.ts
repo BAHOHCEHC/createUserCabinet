@@ -86,7 +86,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       this.onClear();
     });
   }
-
   subscribeControls(currentControl: AbstractControl, key: string) {
     currentControl.valueChanges
       .pipe(
