@@ -1,4 +1,6 @@
 {
 	"editor.wordWrap": "wordWrapColumn",
-	"editor.wordWrapColumn": 160
+	"editor.wordWrapColumn": 160,
+	"editor.defaultFormatter": "Angular.ng-template",
+  "prettier.singleQuote": true
 }

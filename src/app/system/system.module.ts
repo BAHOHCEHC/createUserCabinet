@@ -14,6 +14,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { CreateUserPageComponent } from './create-user-page/create-user-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { DialogAddShippingComponent } from './shared/components/dialogAddShipping/dialog-add-shipping.component';
 
 import {
   MatButtonModule,
@@ -47,6 +48,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '../barel/index';
+import { DialogUpdateUserComponent } from './shared/components/dialogUpdateUser/dialog-update-user.component';
 
 @NgModule({
   imports: [
@@ -96,7 +98,9 @@ import {
     MainPageComponent,
     CreateUserPageComponent,
     SearchPageComponent,
-    FooterComponent
+    FooterComponent,
+    DialogAddShippingComponent,
+    DialogUpdateUserComponent
   ],
   exports: [
     CommonModule,

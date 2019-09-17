@@ -1,17 +1,20 @@
 export class User {
   constructor(
+    public id: string,
     public email: string,
     public password?: string,
     public login?: string,
     public firstName?: string,
     public lastName?: string,
     public phoneNumber?: string,
-    public addressType?: string,
-    public adressHome?: string,
-    public city?: string,
-    public country?: string,
-    public postalCode?: string,
     public role?: string,
-    public id?: number,
+    public shipping?: Shipping[]
   ) {}
+}
+export interface Shipping {
+  adressType?: string;
+  adress?: string;
+  city?: string;
+  country?: string;
+  postalCode?: number;
 }

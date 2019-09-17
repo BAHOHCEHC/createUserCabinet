@@ -3,3 +3,11 @@ button.mat-primary {
   margin-left: 15px;
   padding: 0;
 }
+
+.mat-table {
+  width: 100%;
+}
+
+.table_wrap{
+  margin: 20px 0;
+}

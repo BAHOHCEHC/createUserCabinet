@@ -3,47 +3,66 @@
     {
       "id": 1,
       "role": "admin",
-      "login": "aaaaaaaaaaa",
+      "login": "superman",
       "email": "admin@admin.ua",
-      "password": "12345678",
-      "firstName": "master",
-      "lastName": "Supername",
-      "phoneNumber": "380669734571",
-      "addressType": "Shipping address",
-      "adressHome": "Pushkin str.",
-      "city": "Berlin",
-      "country": "Ukraine",
-      "postalCode": "555"
-    },
-    {
-      "id": 3,
-      "role": "admin",
-      "login": "ssssssss",
-      "email": "admin@admin.ua",
-      "password": "12345678",
-      "firstName": "master",
-      "lastName": "ssssss",
-      "phoneNumber": "123456789",
-      "addressType": "Shipping address",
-      "adressHome": "Pushkin str.",
-      "city": "Kiev",
-      "country": "Ukraine",
-      "postalCode": "555"
+      "password": "superman",
+      "firstName": "Bob",
+      "lastName": "Bobson",
+      "phoneNumber": "987654321",
+      "shipping": [
+        {
+          "addressType": "Shipping address",
+          "adress": "Bobson str.",
+          "city": "London",
+          "country": "GB",
+          "postalCode": "555"
+        },
+        {
+          "addressType": "Shipping address",
+          "adress": "Bobson str.",
+          "city": "Berlin",
+          "country": "Germany",
+          "postalCode": "555"
+        }
+      ]
     },
     {
       "id": 2,
       "role": "user",
-      "login": "Burato",
-      "email": "user@user.ua",
-      "password": "123",
-      "firstName": "Ivan",
-      "lastName": "Ivanov",
-      "phoneNumber": "389506546541",
-      "addressType": "Shipping address",
-      "adressHome": "Ivanov str.",
-      "city": "Mosscow",
-      "country": "russia",
-      "postalCode": "555"
+      "login": "Blablabla",
+      "email": "blablabla@blablabla.ua",
+      "password": "blablabla",
+      "firstName": "John",
+      "lastName": "Jonson",
+      "phoneNumber": "123456",
+      "shipping": [
+        {
+          "addressType": "Shipping address",
+          "adress": "Jonson str.",
+          "city": "Paris",
+          "country": "France",
+          "postalCode": "111"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "role": "user",
+      "login": "frog",
+      "email": "frog@frog.ua",
+      "password": "frog",
+      "firstName": "Max",
+      "lastName": "Maxsons",
+      "phoneNumber": "66666666666",
+      "shipping": [
+        {
+          "addressType": "Shipping address",
+          "adress": "Maxson str.",
+          "city": "Washington",
+          "country": "USA",
+          "postalCode": "666"
+        }
+      ]
     }
   ]
 }

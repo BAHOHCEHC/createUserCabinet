@@ -1,21 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/shared/models/user.model";
-import { UsersService } from "src/app/shared/services/users.service";
+import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.model';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
-  selector: "app-search-page",
-  templateUrl: "./search-page.component.html",
-  styleUrls: ["./search-page.component.css"]
+  selector: 'app-search-page',
+  templateUrl: './search-page.component.html',
+  styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-  displayedColumns: string[] = [
-    "firstName",
-    "lastName",
-    "username",
-    "Email",
-    "phoneNumber",
-    "action"
-  ];
+  displayedColumns: string[] = ['firstName', 'lastName', 'username', 'Email', 'phoneNumber', 'action'];
   usersData: User[] = [];
 
   constructor(private userservice: UsersService) {}
