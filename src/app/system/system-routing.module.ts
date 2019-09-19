@@ -12,9 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: SystemComponent,
-    // ______________________________________
     canActivate: [AuthGuard],
-    // ______________________________________
     children: [
       { path: 'search', component: MainPageComponent },
       { path: 'allusers', component: SearchPageComponent },

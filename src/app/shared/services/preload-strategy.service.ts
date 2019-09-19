@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { PreloadingStrategy, Route } from "@angular/router";
-import { Observable, of } from "rxjs";
-import { flatMap, delay } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { PreloadingStrategy, Route } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { flatMap, delay } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class PreloadStrategyService implements PreloadingStrategy {
   // preload(route: Route, fn: () => Observable<any>): Observable<any> {
