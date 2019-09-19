@@ -22,13 +22,22 @@ export class RegistrationComponent implements OnInit {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      login: new FormControl(null, [Validators.required])
+      login: new FormControl(null, [Validators.required]),
+      firstName: new FormControl(null, [Validators.required]),
+      lastName: new FormControl(null, [Validators.required]),
+      phoneNumber: new FormControl(null, [Validators.required])
     });
   }
 
   onSubmit() {
-    const { email, password, login } = this.form.value;
-    const user = new User(email, password, login);
+    const user = new User(
+      this.form.controls.email.value,
+      this.form.controls.password.value,
+      this.form.controls.login.value,
+      this.form.controls.firstName.value,
+      this.form.controls.lastName.value,
+      this.form.controls.phoneNumber.value
+    );
 
     this.usersService.createNewUser(user).subscribe(() => {
       this.router.navigate(['/login'], {

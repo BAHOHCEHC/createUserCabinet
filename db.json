@@ -65,21 +65,12 @@
       ]
     },
     {
-      "email": "asdsa@efzd.dfg",
-      "firstName": "dfgdfg",
-      "lastName": "dfgdfg",
-      "login": "dfgdfg",
-      "password": "123456789",
-      "phoneNumber": "2354364567867",
-      "shipping": [
-        {
-          "addressType": "erterter",
-          "adress": "tertert",
-          "city": "erterter",
-          "country": "Afganistan",
-          "postalCode": "54645756"
-        }
-      ],
+      "email": "aaaa@qqq.er",
+      "password": "123123",
+      "login": "aaaaaaaaaaaaaaaaaaa",
+      "firstName": "aaaaaaaaaaaaaaa",
+      "lastName": "aaaaaaaaaaaaaa",
+      "phoneNumber": "7777777777",
       "id": 4
     }
   ]

@@ -117,19 +117,21 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           }
           this.users.push(element);
         }
-        if (this.users.length) {
+        if (this.users[0].shipping) {
           this.shipping = this.users[0].shipping;
+        }
+        if (this.users.length) {
           this.useId = this.users[0].id;
           this.user = this.users[0];
         }
         // console.log(this.users);
       });
   }
-  updateUser(user): void {
+  updateUser(): void {
     const dialogRef = this.dialog.open(DialogUpdateUserComponent, {
       width: '70vw',
       height: '45vh',
-      data:  this.user
+      data: this.user
     });
     dialogRef.afterClosed().subscribe(state => {
       if (state) {
@@ -168,4 +170,3 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
 }
-
