@@ -12,7 +12,7 @@ export class User {
   ) {}
 }
 export interface Shipping {
-  adressType?: string;
+  addressType?: string;
   adress?: string;
   city?: string;
   country?: string;

@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject, OnInit, Component } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Shipping } from 'src/app/shared/models/user.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -16,10 +16,10 @@ export const filter = (opt: string[], value: string): string[] => {
 };
 
 @Component({
-  selector: 'app-dialog-add-shipping',
-  templateUrl: './dialog-add-shipping.component.html'
+  selector: 'app-dialog-update-shipping',
+  templateUrl: './dialog-update-shipping.component.html'
 })
-export class DialogAddShippingComponent implements OnInit {
+export class DialogUpdateShippingComponent implements OnInit {
   updateForm: FormGroup;
   newShipping: Shipping;
   countriesList: CountriesGroup[] = [
@@ -97,16 +97,20 @@ export class DialogAddShippingComponent implements OnInit {
     }
   ];
 
-  constructor(private userservice: UsersService, private dialogRef: MatDialogRef<DialogAddShippingComponent>, @Inject(MAT_DIALOG_DATA) private data) {}
+  constructor(
+    private userservice: UsersService,
+    private dialogRef: MatDialogRef<DialogUpdateShippingComponent>,
+    @Inject(MAT_DIALOG_DATA) private data
+  ) {}
   countries: Observable<CountriesGroup[]>;
 
   ngOnInit() {
     this.updateForm = new FormGroup({
-      addressType: new FormControl(null, [Validators.required]),
-      adress: new FormControl(null, [Validators.required]),
-      city: new FormControl(null, [Validators.required]),
-      postalCode: new FormControl(''),
-      country: new FormControl(null, [Validators.required])
+      addressType: new FormControl(this.data.shipping.addressType, [Validators.required]),
+      adress: new FormControl(this.data.shipping.adress, [Validators.required]),
+      city: new FormControl(this.data.shipping.city, [Validators.required]),
+      postalCode: new FormControl(this.data.shipping.postalCode),
+      country: new FormControl(this.data.shipping.country, [Validators.required])
     });
 
     this.countries = this.updateForm.controls.country.valueChanges.pipe(
@@ -120,22 +124,28 @@ export class DialogAddShippingComponent implements OnInit {
     }
     return this.countriesList;
   }
-
+  addNewShipping() {
+    this.close(true);
+  }
   save() {
-    const user = this.data.user;
-    const newShipping: Shipping = {
-      addressType: this.updateForm.controls.addressType.value,
-      adress: this.updateForm.controls.adress.value,
-      city: this.updateForm.controls.city.value,
-      country: this.updateForm.controls.country.value,
-      postalCode: this.updateForm.controls.postalCode.value
-    };
-    user.shipping.push(newShipping);
-    this.userservice.addShipping(user).subscribe(res => {
-      this.close(res);
+    const indx = this.data.user.shipping.indexOf(this.data.shipping);
+    const shipping = this.data.user.shipping[indx];
+    shipping.addressType = this.updateForm.controls.addressType.value;
+    shipping.adress = this.updateForm.controls.adress.value;
+    shipping.city = this.updateForm.controls.city.value;
+    shipping.postalCode = this.updateForm.controls.postalCode.value;
+    shipping.country = this.updateForm.controls.country.value;
+    this.newShipping = shipping;
+
+    this.userservice.updateShipping(this.data.user).subscribe(() => {
+      this.close(false);
     });
   }
-  close(res) {
-    this.dialogRef.close(res);
+  close(state) {
+    if (state) {
+      this.dialogRef.close(state);
+    } else {
+      this.dialogRef.close(false);
+    }
   }
 }

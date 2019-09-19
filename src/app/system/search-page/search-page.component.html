@@ -1,40 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h1>All users</h1>
+  </div>
+</div>
+
+
 <table mat-table [dataSource]="usersData" class="mat-elevation-z8">
 
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef>First Name</th>
-    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
   </ng-container>
 
   <ng-container matColumnDef="lastName">
     <th mat-header-cell *matHeaderCellDef>Last Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
   </ng-container>
 
   <ng-container matColumnDef="username">
     <th mat-header-cell *matHeaderCellDef>User Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.login}} </td>
   </ng-container>
 
 
   <ng-container matColumnDef="Email">
     <th mat-header-cell *matHeaderCellDef>Email</th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.email}} </td>
   </ng-container>
 
   <ng-container matColumnDef="phoneNumber">
     <th mat-header-cell *matHeaderCellDef>Phone</th>
-    <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.phoneNumber}} </td>
   </ng-container>
 
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Actons</th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let user">
       <div class="container">
         <div class="row">
-          <button class="actionbtn" type="button" mat-raised-button color="primary" (click)="update(element, $event)">update</button>
-          <button class="actionbtn" type="button" mat-raised-button color="warn" (click)="deleteUser(element, $event)">delete</button>
-          <button class="actionbtn" type="button" mat-raised-button color="accent"
-            (click)="addShipping(element, $event)">addShipping</button>
+          <button class="actionbtn" type="button" mat-raised-button color="primary"
+            (click)="updateUser(user)">update</button>
+          <button class="actionbtn" type="button" mat-raised-button color="warn"
+            (click)="deleteUser(user)">delete</button>
         </div>
       </div>
     </td>

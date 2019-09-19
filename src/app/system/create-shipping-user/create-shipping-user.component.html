@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <h1>Add Shipping</h1>
+  </div>
+</div>
+
+<form [formGroup]="shippingForm" autocomplete="off" fxLayoutAlign="center center">
+
+  <mat-card-content>
+    <div class="container">
+      <div class="row">
+        <div class="row align-items-center">
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="AddressType" formControlName="addressType" id="addressType">
+            <mat-error *ngIf="shippingForm.get('addressType').hasError('required')">Required field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="Adress" formControlName="adress" id="adress">
+            <mat-error *ngIf="shippingForm.get('adress').hasError('required')">Required field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+            <input matInput type="text" placeholder="City" formControlName="city" id="city">
+            <mat-error *ngIf="shippingForm.get('city').hasError('required')">Required field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+            <input type="text" matInput placeholder="Country" formControlName="country" [matAutocomplete]="autoGroup">
+            <mat-autocomplete #autoGroup="matAutocomplete">
+              <mat-optgroup *ngFor="let country of countries | async" [label]="country.letter">
+                <mat-option *ngFor="let name of country.names" [value]="name">
+                  {{name}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="Postal Code" formControlName="postalCode" id="postalCode">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <div class="container">
+    <div class="row">
+      <mat-card-actions>
+        <button class="col-md-1" type="button" mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+        <button class="col-md-1" type="button" mat-raised-button color="primary" [disabled]="!shippingForm.valid"
+          (click)="save()">Save</button>
+      </mat-card-actions>
+    </div>
+  </div>
+
+</form>

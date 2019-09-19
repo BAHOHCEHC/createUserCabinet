@@ -3517,9 +3517,10 @@ pre {
   transform: scaleX(1)
 }
 
-.sidebar-header .brand .material-icons{
+.sidebar-header .brand .material-icons {
   margin-right: 5px;
 }
+
 .sidebar-header .brand {
   color: #fff;
   text-align: left;
@@ -3957,7 +3958,7 @@ a {
 .foter {
   display: flex;
   width: 100%;
-  background: red;
+  background: #4f5f6f;
   min-height: 20vh;
 }
 

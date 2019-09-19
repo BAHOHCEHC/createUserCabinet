@@ -1,10 +1,4 @@
-import {
-  animate,
-  style,
-  transition,
-  trigger,
-  state
-} from '@angular/animations';
+import { animate, style, transition, trigger, state, group, query } from '@angular/animations';
 
 export const fadeStateTrigger = trigger('fade', [
   transition(':enter', [
@@ -33,3 +27,4 @@ export const fadeInOut = trigger('fade', [
   ),
   transition('void <=> *', animate(300))
 ]);
+

@@ -24,12 +24,6 @@
       login can not be empty!
     </span>
   </div>
-  <div class="form-group" [ngClass]="{'has-error': form.get('agree').invalid && form.get('agree').touched}">
-    <label for="agree">
-      <input class="checkbox" id="agree" type="checkbox" formControlName="agree">
-      <span>Agree</span>
-    </label>
-  </div>
   <div class="form-group">
     <button type="submit" class="btn btn-block btn-primary" [disabled]="form.invalid">
       Registration

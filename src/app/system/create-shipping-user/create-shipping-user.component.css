@@ -4,3 +4,7 @@
   align-items: flex-start;
 }
 
+.mat-card-actions button {
+  display: flex;
+  justify-content: center;
+}

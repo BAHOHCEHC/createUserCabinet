@@ -16,26 +16,18 @@ export class BaseApi {
   }
 
   public get(url: string = ''): Observable<any> {
-    return (
-      this.http
-        .get(this.getUrl(url))
-        // .pipe(map((response: Response) => response.json()));
-        .pipe(map(response => response))
-    );
+    return this.http.get(this.getUrl(url)).pipe(map(response => response));
   }
 
   public post(url: string = '', data: any = {}): Observable<any> {
     return this.http.post(this.getUrl(url), data).pipe(map(response => response));
-    // .pipe(map((response: Response) => response.json()));
   }
 
   public put(url: string = '', data: any = {}): Observable<any> {
     return this.http.put(this.getUrl(url), data).pipe(map(response => response));
-    // .pipe(map((response: Response) => response.json()));
   }
 
   public delete(url: string = ''): Observable<any> {
     return this.http.delete(this.getUrl(url)).pipe(map(response => response));
-    // .pipe(map((response: Response) => response.json()));
   }
 }

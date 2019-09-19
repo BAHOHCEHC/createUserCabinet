@@ -5,24 +5,24 @@
       "role": "admin",
       "login": "superman",
       "email": "admin@admin.ua",
-      "password": "superman",
-      "firstName": "Bob",
+      "password": "111",
+      "firstName": "Boba",
       "lastName": "Bobson",
-      "phoneNumber": "987654321",
+      "phoneNumber": "123",
       "shipping": [
         {
           "addressType": "Shipping address",
-          "adress": "Bobson str.",
+          "adress": "London str.",
           "city": "London",
-          "country": "GB",
-          "postalCode": "555"
+          "country": "Albania",
+          "postalCode": "44444444"
         },
         {
           "addressType": "Shipping address",
-          "adress": "Bobson str.",
+          "adress": "Berlin str.",
           "city": "Berlin",
           "country": "Germany",
-          "postalCode": "555"
+          "postalCode": "7777777777777"
         }
       ]
     },
@@ -53,7 +53,7 @@
       "password": "frog",
       "firstName": "Max",
       "lastName": "Maxsons",
-      "phoneNumber": "66666666666",
+      "phoneNumber": "66",
       "shipping": [
         {
           "addressType": "Shipping address",
@@ -63,6 +63,24 @@
           "postalCode": "666"
         }
       ]
+    },
+    {
+      "email": "asdsa@efzd.dfg",
+      "firstName": "dfgdfg",
+      "lastName": "dfgdfg",
+      "login": "dfgdfg",
+      "password": "123456789",
+      "phoneNumber": "2354364567867",
+      "shipping": [
+        {
+          "addressType": "erterter",
+          "adress": "tertert",
+          "city": "erterter",
+          "country": "Afganistan",
+          "postalCode": "54645756"
+        }
+      ],
+      "id": 4
     }
   ]
 }

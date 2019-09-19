@@ -34,4 +34,13 @@ export class UsersService extends BaseApi {
   deleteUser(user: User): Observable<User> {
       return this.delete(`users/${user.id}`);
   }
+  updateShipping(user: User): Observable<User> {
+      return this.put(`users/${user.id}/`, user);
+  }
+  updateUser(user: User): Observable<User> {
+      return this.put(`users/${user.id}/`, user);
+  }
+  addShipping(user: User): Observable<User> {
+      return this.put(`users/${user.id}/`, user);
+  }
 }

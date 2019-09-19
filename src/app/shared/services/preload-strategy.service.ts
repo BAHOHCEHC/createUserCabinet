@@ -15,7 +15,7 @@ export class PreloadStrategyService implements PreloadingStrategy {
   //   }
   preload(route: Route, fn: () => Observable<boolean>): Observable<boolean> {
     return of(true).pipe(
-      delay(5000),
+      delay(3000),
       flatMap((_: boolean) => fn())
     );
   }

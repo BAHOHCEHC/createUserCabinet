@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { DialogUpdateUserComponent } from '../shared/components/dialogUpdateUser/dialog-update-user.component';
+import { MatDialog } from 'src/app/barel';
 
 @Component({
   selector: 'app-search-page',
@@ -11,39 +13,25 @@ export class SearchPageComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'username', 'Email', 'phoneNumber', 'action'];
   usersData: User[] = [];
 
-  constructor(private userservice: UsersService) {}
+  constructor(private userservice: UsersService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.userservice.getAllUser().subscribe(data => {
       this.usersData = data;
     });
   }
-
-  update(data, event): void {
-    event.stopPropagation();
-    console.log(data);
-    console.log(event);
-
-    // const editDialogRef = this.dialog.open(EditClientComponent, {
-    //   data: data
-    // );
+  updateUser(user): void {
+    const dialogRef = this.dialog.open(DialogUpdateUserComponent, {
+      width: '70vw',
+      height: '45vh',
+      data: user
+    });
   }
-  deleteUser(data, event): void {
-    event.stopPropagation();
-    console.log(data);
-    console.log(event);
-
-    // const editDialogRef = this.dialog.open(EditClientComponent, {
-    //   data: data
-    // );
-  }
-  addShipping(data, event): void {
-    event.stopPropagation();
-    console.log(data);
-    console.log(event);
-
-    // const editDialogRef = this.dialog.open(EditClientComponent, {
-    //   data: data
-    // );
+  deleteUser(user): void {
+    this.userservice.deleteUser(user).subscribe(e => {
+      this.userservice.getAllUser().subscribe(data => {
+        this.usersData = data;
+      });
+    });
   }
 }

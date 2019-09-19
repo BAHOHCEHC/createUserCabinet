@@ -1,26 +1,24 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Shipping } from 'src/app/shared/models/user.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Shipping, User } from 'src/app/shared/models/user.model';
+import { CountriesGroup } from '../shared/components/dialogAddShipping/dialog-add-shipping.component';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { UsersService } from 'src/app/shared/services/users.service';
 
-export interface CountriesGroup {
-  letter: string;
-  names: string[];
-}
 export const filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
 };
 
 @Component({
-  selector: 'app-dialog-add-shipping',
-  templateUrl: './dialog-add-shipping.component.html'
+  selector: 'app-create-shipping-user',
+  templateUrl: './create-shipping-user.component.html',
+  styleUrls: ['./create-shipping-user.component.css']
 })
-export class DialogAddShippingComponent implements OnInit {
-  updateForm: FormGroup;
+export class CreateShippingUserComponent implements OnInit {
+  shippingForm: FormGroup;
   newShipping: Shipping;
   countriesList: CountriesGroup[] = [
     {
@@ -96,12 +94,12 @@ export class DialogAddShippingComponent implements OnInit {
       names: ['Vietnam']
     }
   ];
-
-  constructor(private userservice: UsersService, private dialogRef: MatDialogRef<DialogAddShippingComponent>, @Inject(MAT_DIALOG_DATA) private data) {}
   countries: Observable<CountriesGroup[]>;
+  user: User = JSON.parse(window.localStorage.getItem('createUser'));
 
+  constructor(private router: Router, private userservice: UsersService) {}
   ngOnInit() {
-    this.updateForm = new FormGroup({
+    this.shippingForm = new FormGroup({
       addressType: new FormControl(null, [Validators.required]),
       adress: new FormControl(null, [Validators.required]),
       city: new FormControl(null, [Validators.required]),
@@ -109,7 +107,7 @@ export class DialogAddShippingComponent implements OnInit {
       country: new FormControl(null, [Validators.required])
     });
 
-    this.countries = this.updateForm.controls.country.valueChanges.pipe(
+    this.countries = this.shippingForm.controls.country.valueChanges.pipe(
       startWith(''),
       map(value => this._filterGroup(value))
     );
@@ -121,21 +119,24 @@ export class DialogAddShippingComponent implements OnInit {
     return this.countriesList;
   }
 
-  save() {
-    const user = this.data.user;
-    const newShipping: Shipping = {
-      addressType: this.updateForm.controls.addressType.value,
-      adress: this.updateForm.controls.adress.value,
-      city: this.updateForm.controls.city.value,
-      country: this.updateForm.controls.country.value,
-      postalCode: this.updateForm.controls.postalCode.value
-    };
-    user.shipping.push(newShipping);
-    this.userservice.addShipping(user).subscribe(res => {
-      this.close(res);
-    });
+  cancel() {
+    this.router.navigate(['/system', 'create']);
+    localStorage.removeItem('createUser');
   }
-  close(res) {
-    this.dialogRef.close(res);
+  save() {
+    const newShipping: Shipping = {
+      addressType: this.shippingForm.controls.addressType.value,
+      adress: this.shippingForm.controls.adress.value,
+      city: this.shippingForm.controls.city.value,
+      country: this.shippingForm.controls.country.value,
+      postalCode: this.shippingForm.controls.postalCode.value
+    };
+    this.user.shipping = [];
+    this.user.shipping.push(newShipping);
+
+    this.userservice.createNewUser(this.user).subscribe(res => {
+      this.router.navigate(['/system', 'search']);
+      localStorage.removeItem('createUser');
+    });
   }
 }

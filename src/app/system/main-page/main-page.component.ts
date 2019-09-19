@@ -4,9 +4,10 @@ import { User, Shipping } from 'src/app/shared/models/user.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { switchMap, debounceTime, filter, map, takeWhile, tap } from 'rxjs/operators';
 import { fadeInOut } from 'src/app/shared/animations/fade.animation';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddShippingComponent } from '../shared/components/dialogAddShipping/dialog-add-shipping.component';
 import { DialogUpdateUserComponent } from '../shared/components/dialogUpdateUser/dialog-update-user.component';
+import { DialogUpdateShippingComponent } from '../shared/components/dialogUpdateShipping/dialog-update-shipping.component';
 
 @Component({
   selector: 'app-main-page',
@@ -38,7 +39,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       ]),
       lastName: new FormControl('', [Validators.maxLength(20)]),
       login: new FormControl('', [Validators.maxLength(20)]),
-      email: new FormControl('', [        Validators.pattern(
+      email: new FormControl('', [
+        Validators.pattern(
           /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )
       ]),
@@ -61,9 +63,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       this.subscribeControls(this.searchForm.controls[key], key);
     });
   }
-  hasError(controlName: string, errorName: string) {
-    return this.searchForm.controls[controlName].hasError(errorName);
-  }
   check(item, prop, user) {
     const propArr = Object.keys(item);
     return propArr.some(k => {
@@ -73,7 +72,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
   deleteShipping(shipping): void {
-    console.log('deleteShipping');
     const indx = this.user.shipping.indexOf(shipping);
     this.shipping = this.user.shipping.splice(indx, 1);
 
@@ -124,31 +122,50 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           this.useId = this.users[0].id;
           this.user = this.users[0];
         }
-        console.log(this.users);
+        // console.log(this.users);
       });
   }
-  updateUser(): void {
-    console.log('updateUser');
-  }
-  updateShipping(): void {
+  updateUser(user): void {
     const dialogRef = this.dialog.open(DialogUpdateUserComponent, {
       width: '70vw',
-      height: '80vh',
-      data: this.users[0]
+      height: '45vh',
+      data:  this.user
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(state => {
+      if (state) {
+        this.addShipping();
+      }
+    });
+  }
+  updateShipping(shipping): void {
+    const dialogRef = this.dialog.open(DialogUpdateShippingComponent, {
+      width: '70vw',
+      height: '45vh',
+      data: {
+        user: this.user,
+        shipping
+      }
+    });
+    dialogRef.afterClosed().subscribe(state => {
+      if (state) {
+        this.addShipping();
+      }
     });
   }
   addShipping(): void {
-    console.log('addShipping');
     const dialogRef = this.dialog.open(DialogAddShippingComponent, {
       width: '70vw',
-      height: '80vh',
-      data: this.users[0]
+      height: '45vh',
+      data: {
+        user: this.user
+      }
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(newUser => {
+      if (!newUser) {
+        return;
+      }
+      this.shipping = newUser.shipping;
     });
   }
 }
+

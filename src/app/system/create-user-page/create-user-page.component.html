@@ -1,1 +1,88 @@
-<p>create-user-page works!</p>
+<div class="container">
+  <div class="row">
+    <h1>Create new user</h1>
+  </div>
+</div>
+
+<form [formGroup]="createUserForm" (ngSubmit)="next(createUserForm)" autocomplete="off" fxLayoutAlign="center center">
+  <mat-card-content>
+
+    <div class="container">
+      <div class="row">
+        <div class="row align-items-center">
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
+            <mat-error *ngIf="createUserForm.get('firstName').hasError('maxlength')">You have more than 20 characters
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('firstName').hasError('required')">Its required field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="Last name" formControlName="lastName" id="lastName">
+            <mat-error *ngIf="createUserForm.get('lastName').hasError('maxlength')">You have more than 20 characters
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('lastName').hasError('required')">Its required field</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="User name" formControlName="login" id="login">
+            <mat-error *ngIf="createUserForm.get('login').hasError('maxlength')">You have more than 20 characters
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('login').hasError('required')">Its required field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+            <mat-error *ngIf="createUserForm.get('email').hasError('pattern')"> incorect format </mat-error>
+            <mat-error *ngIf="createUserForm.get('email').hasError('required')">Its required field</mat-error>
+            <mat-error *ngIf="createUserForm.get('email').hasError('forbiddenEmail')">Email exist</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <input matInput type="text" placeholder="Phone" formControlName="phoneNumber" id="phoneNumber">
+            <mat-error *ngIf="createUserForm.get('phoneNumber').hasError('pattern')">Only numbers</mat-error>
+            <mat-error
+              *ngIf="createUserForm.get('phoneNumber').hasError('minlength')  && !(createUserForm.get('phoneNumber').hasError('pattern'))">
+              Must be more than 5 numbers</mat-error>
+            <mat-error *ngIf="createUserForm.get('phoneNumber').hasError('required')">Its required field</mat-error>
+          </mat-form-field>
+
+
+          <div formGroupName="password">
+            <mat-form-field class="col-md-6">
+              <input matInput type="password" placeholder="Password" formControlName="pass1">
+              <mat-error *ngIf="createUserForm.get('password.pass1').hasError('required')">Password is required
+              </mat-error>
+              <mat-error *ngIf="createUserForm.get('password.pass1').hasError('minlength')">Password must have at
+                least {{minPw}} characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <input matInput type="password" placeholder="Confirm password" formControlName="pass2">
+              <mat-error *ngIf="createUserForm.get('password.pass2').hasError('required')">Please confirm your password
+              </mat-error>
+              <mat-error *ngIf="createUserForm.get('password.pass2').hasError('minlength')">Password must have at
+                least {{minPw}} characters
+              </mat-error>
+              <mat-error
+                *ngIf="!createUserForm.get('password.pass2').valid && !createUserForm.get('password.pass2').hasError('required')">
+                Passwords don't match</mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <div class="container">
+    <div class="row">
+      <mat-card-actions>
+        <button class="col-md-1" type="button" mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        <button class="col-md-1" mat-raised-button color="primary" [disabled]="!createUserForm.valid">Next</button>
+      </mat-card-actions>
+    </div>
+  </div>
+</form>
